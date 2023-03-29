@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Finder = ({ filter, onChange }) => {
   return (
@@ -26,7 +26,7 @@ const Finder = ({ filter, onChange }) => {
   );
 };
 Finder.propTypes = {
-  // filter: PropTypes.string.isRequired,
-  // onChange: PropTypes.bull.isRequired,
+  filter: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 export default Finder;

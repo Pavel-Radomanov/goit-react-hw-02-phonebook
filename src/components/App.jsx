@@ -12,7 +12,7 @@ const mainStyle = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'left',
-  fontSize: 25,
+  fontSize: 20,
   color: '#3d2f26ed',
   marginLeft: '30px',
 };
@@ -40,13 +40,16 @@ class App extends Component {
         }));
     console.log(contacts);
   };
-  getVisibleContact = () => {
+  getListContacts = () => {
     const { contacts, filter } = this.state;
-    const normalizedfilter = filter.toLowerCase();
+    const normalizeFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedfilter)
+      contact.name.toLowerCase().includes(normalizeFilter)
     );
+  };
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
   };
   // +++++++++++++
   deleteContact = contactId => {
@@ -54,12 +57,10 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
-  };
+
   render() {
     const { filter } = this.state;
-    const visibleContact = this.getVisibleContact();
+    const visibleContact = this.getListContacts();
 
     return (
       <div style={mainStyle}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 // Input form
 class ContactForm extends Component {
   state = {
@@ -50,6 +51,7 @@ class ContactForm extends Component {
             onChange={this.handleChange}
             name="name"
             value={name}
+            // pattern for input
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -58,6 +60,7 @@ class ContactForm extends Component {
 
         <label>
           Number
+          {/* инпут с встроенной валидацией для имени контакта. */}
           <input
             style={{
               height: '34px',
@@ -93,5 +96,8 @@ class ContactForm extends Component {
     );
   }
 }
-
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+};
 export default ContactForm;
